@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect - Smart College Hub</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #4cc9f0;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* How It Works */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            color: white;
+        }
+        
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .app-btn {
+            display: flex;
+            align-items: center;
+            background: white;
+            color: var(--dark);
+            padding: 15px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .app-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .app-btn i {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #adb5bd;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .steps {
+                flex-direction: column;
+            }
+            
+            .step {
+                margin-bottom: 30px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            header {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">CampusConnect</h1>
+                <p class="tagline">Your All-in-One Campus Companion</p>
+                <h2>Never miss a campus update again - all in one app</h2>
+                <p>Centralized access to schedules, bus timings, events, and study groups with AI-powered tools to boost productivity and engagement.</p>
+                <div style="margin-top: 30px;">
+                    <a href="#download" class="btn">Download Now</a>
+                    <a href="#features" class="btn btn-outline" style="margin-left: 15px;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center;">Everything You Need for Campus Life</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">CampusConnect brings all your campus information and tools into one convenient platform.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Class Schedules & Updates</h3>
+                    <p>Access your class timetable, receive real-time updates, and never miss a lecture or deadline again.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🚍</div>
+                    <h3>Real-time Bus Tracking</h3>
+                    <p>Know exactly when your campus shuttle will arrive with live tracking and predictive arrival times.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Campus Events & Announcements</h3>
+                    <p>Stay informed about all campus activities, workshops, and important announcements in one place.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Lost & Found Portal</h3>
+                    <p>Report lost items or help others find their belongings through our campus-wide lost and found system.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Campus Assistant</h3>
+                    <p>Get instant answers to your campus-related questions with our intelligent AI assistant.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Study Group Chats</h3>
+                    <p>Connect with classmates, form study groups, and collaborate on projects seamlessly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section style="background-color: var(--light);">
+        <div class="container">
+            <h2 style="text-align: center;">How CampusConnect Works</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Getting started with CampusConnect is simple and takes just a few minutes.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Download & Register</h3>
+                    <p>Get the app from your app store and register with your student credentials.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Set Preferences</h3>
+                    <p>Customize your experience by selecting your classes, bus routes, and interests.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Explore Features</h3>
+                    <p>Access schedules, track buses, join events, and connect with peers.</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Stay Connected</h3>
+                    <p>Receive personalized notifications and never miss important campus updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="text-align: center;">What Students Say</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Hear from students who are already using CampusConnect to simplify their campus life.</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"CampusConnect saved me so much time! I used to check multiple apps and notice boards, but now everything is in one place."</p>
+                    <p class="testimonial-author">- Priya, Computer Science Major</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The bus tracking feature is a game-changer. No more waiting in the rain wondering when the shuttle will arrive!"</p>
+                    <p class="testimonial-author">- Rohan, Engineering Student</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I found my lost wallet through CampusConnect in just one day. The community really comes together on this platform."</p>
+                    <p class="testimonial-author">- Anjali, Business Administration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="download">
+        <div class="container">
+            <h2>Ready to Simplify Your Campus Life?</h2>
+            <p>Join thousands of students who are already using CampusConnect to stay organized and connected.</p>
+            
+            <div class="app-buttons">
+                <a href="#" class="app-btn">
+                    <span style="font-size: 1.5rem;">📱</span>
+                    <div>
+                        <small>Download on the</small>
+                        <div>App Store</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="app-btn">
+                    <span style="font-size: 1.5rem;">🤖</span>
+                    <div>
+                        <small>Get it on</small>
+                        <div>Google Play</div>
+                    </div>
+                </a>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">Basic features are completely free for all students!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampusConnect</h3>
+                    <p>Your all-in-one campus companion for schedules, events, transportation, and community connection.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#features">Features</a>
+                        <a href="#download">Download</a>
+                        <a href="#">For Institutions</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-links">
+                        <a href="mailto:hello@campusconnect.app">hello@campusconnect.app</a>
+                        <a href="#">Help Center</a>
+                        <a href="#">Feedback</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 CampusConnect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add a simple animation to feature cards when they come into view
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
